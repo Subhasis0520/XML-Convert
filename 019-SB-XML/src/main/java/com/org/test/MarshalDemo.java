@@ -1,0 +1,26 @@
+package com.org.test;
+
+import java.io.File;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+
+import com.org.binding.Customer;
+
+public class MarshalDemo {
+
+	public static void main(String[] args) throws Exception {
+
+		
+		Customer c = new Customer();
+		c.setId(101);
+		c.setName("Sudip");
+		c.setGender("Male");
+		c.setPhone(8170098);
+		
+		JAXBContext context = JAXBContext.newInstance(Customer.class);
+		Marshaller marshaller = context.createMarshaller();
+		marshaller.marshal(c, new File("customer.xml"));
+		System.out.println("Xml created...");
+	}
+}
